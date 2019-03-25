@@ -45,10 +45,12 @@ class Note extends React.Component {
             <div className="note">
                 <p>Note for bulletin board</p>
                 <span>
-                    <button onClick={this.edit} id="edit">Edit</button>
-                    <button onClick={this.delete} id="delete">Delete</button>
-                    {/* <button><FaPencil /></button> */}
-                    {/* <button><FaTrash /></button> */}
+                    <div id="btns">
+                        <button onClick={this.edit} id="edit">Edit</button>
+                        <button onClick={this.delete} id="delete">Delete</button>
+                        {/* <button><FaPencil /></button> */}
+                        {/* <button><FaTrash /></button> */}
+                    </div>
                 </span>
             </div>
         )
