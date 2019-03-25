@@ -14,9 +14,13 @@ code {
 }
 
 .note {
+  height: 100px;
+  width: 100px;
   background-color: yellow;
   padding: 0px 10px 10px 10px;
+  margin: 3px;
   display: inline-block;
+  position: absolute;
 }
 
 button {
