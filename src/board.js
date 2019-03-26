@@ -5,19 +5,37 @@ class Board extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            notes: [
-                {
-                    id: 0,
-                    note: "work on learning React"
-                },
-                {
-                    id: 1,
-                    note: "get AC fixed"
-                }
-            ]
+            notes: []
         }
+        this.create = this.create.bind(this);
         this.eachNote = this.eachNote.bind(this);
         this.update = this.update.bind(this);
+        this.delete = this.delete.bind(this);
+        this.nextId = this.nextId.bind(this);
+    }
+
+    // componentWillMount() {
+    //     var self = this;
+    //     if (this.props.count) {
+    //         fetch()
+    //     }
+    // }
+
+    create(text) {
+        this.setState(prevState => ({
+            notes: [
+                ...prevState.notes,
+                {
+                    id: this.nextId(),
+                    note: text
+                }
+            ]
+        }))
+    }
+
+    nextId() {
+        this.uniqueId = this.uniqueId || 0;
+        return this.uniqueId++
     }
 
     update(newText, i) {
@@ -29,9 +47,16 @@ class Board extends Component {
         }))
     }
 
+    delete(id) {
+        console.log('removing item at', id);
+        this.setState(prevState => ({
+            notes: prevState.notes.filter(note => note.id !== id)
+        }))
+    }
+
     eachNote(note, i) {
         return (
-            <Note key={i} index={i} onChange={this.update}>{note.note}</Note>
+            <Note key={i} index={i} onChange={this.update} onRemove={this.delete}>{note.note}</Note>
         )
     }
 
@@ -39,6 +64,7 @@ class Board extends Component {
         return (
             <div className="board">
                 {this.state.notes.map(this.eachNote)}
+                <button onClick={this.create.bind(null, "create a new note here")} id="create_note">New Note</button>
             </div>
         )
     }

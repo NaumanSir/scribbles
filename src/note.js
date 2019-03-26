@@ -22,7 +22,7 @@ class Note extends React.Component {
     };
 
     delete() {
-        alert('deleting note')
+        this.props.onRemove(this.props.index)
     };
 
     save(e) {
@@ -31,7 +31,7 @@ class Note extends React.Component {
         this.setState({
             editing: false
         })
-    }
+    };
 
     renderForm() {
         return(
