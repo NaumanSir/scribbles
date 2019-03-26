@@ -7,21 +7,31 @@ class Board extends Component {
         this.state = {
             notes: [
                 {
-                    id: 2,
+                    id: 0,
                     note: "work on learning React"
                 },
                 {
-                    id: 3,
+                    id: 1,
                     note: "get AC fixed"
                 }
             ]
         }
         this.eachNote = this.eachNote.bind(this);
+        this.update = this.update.bind(this);
+    }
+
+    update(newText, i) {
+        console.log("new text: ", newText);
+        this.setState(prevState => ({
+            notes: prevState.notes.map(
+                note => (note.id !== i) ? note : {...note, note: newText}
+            )
+        }))
     }
 
     eachNote(note, i) {
         return (
-            <Note key={i} index={i}>{note.note}</Note>
+            <Note key={i} index={i} onChange={this.update}>{note.note}</Note>
         )
     }
 
