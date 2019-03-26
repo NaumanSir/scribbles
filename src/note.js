@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { Component } from 'react';
 // import FaPencil from 'react-icons/lib/fa/pencil';
 // import FaTrash from 'react-icons/lib/fa/trash';
 // import FaFloppyO from 'react-icons/lib/fa/floppy-o';
 
-class Note extends React.Component {
+class Note extends Component {
     constructor(props) {
         super(props);
         this.state = {

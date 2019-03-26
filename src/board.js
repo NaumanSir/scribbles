@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Note from './note';
 
-class Board extends React.Component {
+class Board extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -21,7 +21,7 @@ class Board extends React.Component {
 
     eachNote(note, i) {
         return (
-            <note key={i} index={i}>{note.note}</note>
+            <Note key={i} index={i}>{note.note}</Note>
         )
     }
 
